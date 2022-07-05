@@ -22,7 +22,7 @@ authors = "d"
 main = Main
 
 -- name of executable
--- executable =
+   executable = "someName"
 -- opts = progexe
 sourcedir = "sources"
 -- builddir =
