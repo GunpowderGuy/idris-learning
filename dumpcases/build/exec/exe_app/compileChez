@@ -1,0 +1,1 @@
+(parameterize ([optimize-level 3] [compile-file-message #f]) (compile-program "/home/diegoa/Documents/3F code/idris-learning/dumpcases/build/exec/exe_app/exe.ss"))

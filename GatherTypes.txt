@@ -1,0 +1,31 @@
+CodeGen
+
+I only see that functions and not constructors have NamedCExp and names inside them
+
+There are some secret options for that (would be nice if they weren't hidden):
+           MkOpt ["--dumpcases"] [Required "output file"] (\f => [DumpCases f])
+              Nothing, -- dump case trees to the given file
+           MkOpt ["--dumplifted"] [Required "output file"] (\f => [DumpLifted f])
+              Nothing, -- dump lambda lifted trees to the given file
+           MkOpt ["--dumpanf"] [Required "output file"] (\f => [DumpANF f])
+              Nothing, -- dump ANF to the given file
+           MkOpt ["--dumpvmcode"] [Required "output file"] (\f => [DumpVMCode f])
+              Nothing, -- dump VM Code to the given file
+
+
+Compiler:
+
+They rely on the names of data and type constructors for ExtSTG. But ANF does not contain all the defined datatypes of an Idris program. (edited)
+[18:31]
+My first approach was solely rely on ANF, it didnt work, because case expressions in ANF matched against constructors not defined in ANF.
+
+
+
+--- To Andorp
+
+I think i have an hypothesis why constructors are eliminated. They seem to be compiled away with dead code elimination. Only the ones used to instantiate varibles remain
+
+
+
+
+I learned A Normalization here: https://matt.might.net/articles/a-normalization/

@@ -1,0 +1,42 @@
+prim__add_Integer = [{arg:0}, {arg:1}]: (+Integer [!{arg:0}, !{arg:1}])
+prim__sub_Integer = [{arg:0}, {arg:1}]: (-Integer [!{arg:0}, !{arg:1}])
+prim__mul_Integer = [{arg:0}, {arg:1}]: (*Integer [!{arg:0}, !{arg:1}])
+Main.numero3 = [{arg:0}]: (Main.double2 [(%con [record] Prelude.Num.MkNum Just 0 [(%lam {arg:5756} (%lam {arg:5759} (+Double [!{arg:5756}, !{arg:5759}]))), (%lam {arg:5766} (%lam {arg:5769} (*Double [!{arg:5766}, !{arg:5769}]))), (%lam {arg:5776} (cast-Integer-Double [!{arg:5776}]))]), !{arg:0}])
+Main.numero2 = [{arg:0}]: (Main.double2 [(%con [record] Prelude.Num.MkNum Just 0 [(%lam {arg:5756} (%lam {arg:5759} (+Integer [!{arg:5756}, !{arg:5759}]))), (%lam {arg:5766} (%lam {arg:5769} (*Integer [!{arg:5766}, !{arg:5769}]))), (%lam {arg:5776} !{arg:5776})]), !{arg:0}])
+Main.numero = [{arg:0}]: (+Integer [!{arg:0}, !{arg:0}])
+Main.minimo = [{arg:0}, {arg:1}]: (%case (Prelude.EqOrd.> [!{arg:0}, !{arg:1}]) [(%constcase 1 !{arg:1}), (%constcase 0 !{arg:0})] Nothing)
+Main.main = []: (Prelude.IO.putStrLn [(%con [cons] Prelude.IO.MkHasIO Just 0 [(%con [record] Prelude.Interfaces.MkMonad Just 0 [(%con [record] Prelude.Interfaces.MkApplicative Just 0 [(%lam b (%lam a (%lam func (%lam {arg:8737} (Prelude.IO.map [!func, !{arg:8737}]))))), (%lam a (%lam {arg:9440} (%lam {eta:0} !{arg:9440}))), (%lam b (%lam a (%lam {arg:9446} (%lam {arg:9453} (PrimIO.io_bind [!{arg:9446}, (%lam f' (PrimIO.io_bind [!{arg:9453}, (%lam a' (%lam {eta:0} (!f' [!a'])))]))])))))]), (%lam b (%lam a (%lam {arg:9920} (%lam {arg:9923} (PrimIO.io_bind [!{arg:9920}, !{arg:9923}]))))), (%lam a (%lam {arg:9934} (PrimIO.io_bind [!{arg:9934}, (%lam {eta:0} !{eta:0})])))]), (%lam a (%lam {arg:11999} !{arg:11999}))]), (++ [(Prelude.Show.show [(Main.numero [3])]), (++ [(Prelude.Show.show [(Main.numero2 [5])]), (++ [(Prelude.Show.show [(Main.numero3 [7.1])]), (Prelude.Show.show [(Main.minimo [1, 0])])])])])])
+Main.double2 = [{arg:1}, {arg:2}]: (%case !{arg:1} [(%concase [record] Prelude.Num.MkNum Just 0 [{e:1}, {e:2}, {e:3}] ((!{e:1} [!{arg:2}]) [!{arg:2}]))] Nothing)
+Builtin.believe_me = [{arg:2}]: (believe_me [___, ___, !{arg:2}])
+Prelude.Types.prim__integerToNat = [{arg:0}]: (%case (%case (<=Integer [0, !{arg:0}]) [(%constcase 0 0)] Just 1) [(%constcase 1 (Builtin.believe_me [!{arg:0}])), (%constcase 0 0)] Nothing)
+Prelude.Num.MkNum = Constructor tag Just 0 arity 3
+Prelude.EqOrd.compare = [{arg:0}, {arg:1}]: (%case (Prelude.EqOrd.< [!{arg:0}, !{arg:1}]) [(%constcase 1 0), (%constcase 0 (%case (Prelude.EqOrd.== [!{arg:0}, !{arg:1}]) [(%constcase 1 1), (%constcase 0 2)] Nothing))] Nothing)
+Prelude.EqOrd.> = [{arg:0}, {arg:1}]: (%case (>Integer [!{arg:0}, !{arg:1}]) [(%constcase 0 0)] Just 1)
+Prelude.EqOrd.== = [{arg:0}, {arg:1}]: (%case !{arg:0} [(%constcase 0 (%case !{arg:1} [(%constcase 0 1)] Just 0)), (%constcase 1 (%case !{arg:1} [(%constcase 1 1)] Just 0)), (%constcase 2 (%case !{arg:1} [(%constcase 2 1)] Just 0))] Just 0)
+Prelude.EqOrd.== = [{arg:0}, {arg:1}]: (%case (==Integer [!{arg:0}, !{arg:1}]) [(%constcase 0 0)] Just 1)
+Prelude.EqOrd.== = [{arg:0}, {arg:1}]: (%case (==Char [!{arg:0}, !{arg:1}]) [(%constcase 0 0)] Just 1)
+Prelude.EqOrd.< = [{arg:0}, {arg:1}]: (%case (<Integer [!{arg:0}, !{arg:1}]) [(%constcase 0 0)] Just 1)
+Prelude.EqOrd./= = [{arg:0}, {arg:1}]: (%case (Prelude.EqOrd.== [!{arg:0}, !{arg:1}]) [(%constcase 1 0), (%constcase 0 1)] Nothing)
+Prelude.Interfaces.MkMonad = Constructor tag Just 0 arity 3
+Prelude.Interfaces.MkApplicative = Constructor tag Just 0 arity 3
+Prelude.Show.show = [{arg:0}]: (Prelude.Show.showPrec [(%con Prelude.Show.Open Just 0 []), !{arg:0}])
+Prelude.Show.show = [{arg:0}]: (Prelude.Show.showPrec [(%con Prelude.Show.Open Just 0 []), !{arg:0}])
+Prelude.Show.showPrec = [{ext:0}, {ext:1}]: (Prelude.Show.primNumShow [(%lam {eta:0} (cast-Integer-String [!{eta:0}])), !{ext:0}, !{ext:1}])
+Prelude.Show.showPrec = [{ext:0}, {ext:1}]: (Prelude.Show.primNumShow [(%lam {eta:0} (cast-Double-String [!{eta:0}])), !{ext:0}, !{ext:1}])
+Prelude.Show.compare = [{arg:0}, {arg:1}]: (%case !{arg:0} [(%concase Prelude.Show.User Just 4 [{e:0}] (%case !{arg:1} [(%concase Prelude.Show.User Just 4 [{e:1}] (Prelude.EqOrd.compare [!{e:0}, !{e:1}]))] Just (Prelude.EqOrd.compare [(Prelude.Show.precCon [!{arg:0}]), (Prelude.Show.precCon [!{arg:1}])])))] Just (Prelude.EqOrd.compare [(Prelude.Show.precCon [!{arg:0}]), (Prelude.Show.precCon [!{arg:1}])]))
+Prelude.Show.>= = [{arg:0}, {arg:1}]: (Prelude.EqOrd./= [(Prelude.Show.compare [!{arg:0}, !{arg:1}]), 0])
+Prelude.Show.showParens = [{arg:0}, {arg:1}]: (%case !{arg:0} [(%constcase 0 !{arg:1}), (%constcase 1 (++ ["(", (++ [!{arg:1}, ")"])]))] Nothing)
+Prelude.Show.primNumShow = [{arg:1}, {arg:2}, {arg:3}]: (%let str (!{arg:1} [!{arg:3}]) (Prelude.Show.showParens [(%case (Prelude.Show.>= [!{arg:2}, (%con Prelude.Show.PrefixMinus Just 5 [])]) [(%constcase 1 (Prelude.Show.firstCharIs [(%lam {arg:0} (Prelude.EqOrd.== [!{arg:0}, '-'])), !str])), (%constcase 0 0)] Nothing), !str]))
+Prelude.Show.precCon = [{arg:0}]: (%case !{arg:0} [(%concase Prelude.Show.Open Just 0 [] 0), (%concase Prelude.Show.Equal Just 1 [] 1), (%concase Prelude.Show.Dollar Just 2 [] 2), (%concase Prelude.Show.Backtick Just 3 [] 3), (%concase Prelude.Show.User Just 4 [{e:0}] 4), (%concase Prelude.Show.PrefixMinus Just 5 [] 5), (%concase Prelude.Show.App Just 6 [] 6)] Nothing)
+Prelude.Show.firstCharIs = [{arg:0}, {arg:1}]: (%case !{arg:1} [(%constcase "" 0)] Just (!{arg:0} [(op_strhead [!{arg:1}])]))
+Prelude.Show.PrefixMinus = Constructor tag Just 5 arity 0
+Prelude.Show.Open = Constructor tag Just 0 arity 0
+Prelude.IO.map = [{arg:2}, {arg:3}]: (PrimIO.io_bind [!{arg:3}, (%lam {eta:0} (%lam {eta:1} (!{arg:2} [!{eta:0}])))])
+Prelude.IO.putStrLn = [{arg:1}, {arg:2}]: (Prelude.IO.putStr [!{arg:1}, (++ [!{arg:2}, "\n"])])
+Prelude.IO.putStr = [{arg:1}, {arg:2}]: (%case !{arg:1} [(%concase [cons] Prelude.IO.MkHasIO Just 0 [{e:1}, {e:2}] ((!{e:2} [___]) [(%lam {eta:0} (Prelude.IO.prim__putStr [!{arg:2}, !{eta:0}]))]))] Nothing)
+Prelude.IO.prim__putStr = Foreign call ["C:idris2_putStr, libidris2_support, idris_support.h", "node:lambda:x=>process.stdout.write(x)", "browser:lambda:x=>console.log(x)"] [String, %World] -> IORes Unit
+Prelude.IO.MkHasIO = Constructor tag Just 0 arity 2
+PrimIO.case block in io_bind = [{arg:3}, {arg:5}]: (%let {eff:0} !{arg:5} (%let {eff:1} (!{arg:3} [!{eff:0}]) (!{eff:1} [___])))
+PrimIO.unsafePerformIO = [{arg:1}]: (%let {eff:0} !{arg:1} (PrimIO.unsafeCreateWorld [(%lam w (%let {eff:1} (!{eff:0} [!w]) !{eff:1}))]))
+PrimIO.unsafeCreateWorld = [{arg:1}]: (!{arg:1} [%MkWorld])
+PrimIO.io_bind = [{arg:2}, {arg:3}]: (%let {eff:0} !{arg:2} (%lam w (PrimIO.case block in io_bind [!{arg:3}, (!{eff:0} [!w])])))

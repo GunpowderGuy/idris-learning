@@ -1,0 +1,57 @@
+ 
+idris2 cookbook
+
+Both data and record are compiled to constructors in the intermediate representations. Two examples of such Constructors are Core.CompileExpr.CExp.CCon and Core.CompileExpr.CDef.MkCon.
+
+Compiling the Either data type will produce three constructor definitions in the IR:
+
+    One for the Either type itself, with the arity of two. Arity tells how many parameters of the constructor should have. Two is reasonable in this case as the original Idris Either type has two parameters.
+
+    One for the Left constructor with arity of three. Three may be surprising, as the constructor only has one argument in Idris, but we should keep in mind the type parameters for the data type too.
+
+    One for the Right constructor with arity of three.
+
+
+
+
+
+According to the idris2 to stg compiler. Anf lacks enough type information for that job, so the software reapplies information from core. I gather converting NamedDef to ML, or another typed functional language would suffer from the same problem (edited)
+[20:57]
+Maybe idris2's compiler jumped the gun when it comes to type erasure (edited)
+[21:01]
+Will new core stabilize in due time? How practical would be to write new backends from core? Could lower IR be modified to carry more information?
+
+
+Mlton monophormizes code using types, that optimization produces a simply typed ir
+
+
+I think i get it. I thought backends for like python and scheme would transform type constructors to classes and records respectively
+[19:09]
+But you just dinamically define raw dictionaries and whatever scheme uses .... (edited)
+
+dunham — Today at 19:09
+yeah, if you're at a higher level of IR, you could.
+[19:10]
+For example, you could do a javascript one where the tag was the name 'Left' to make the data more inspectable in a debugger, or even use a js class for it. (I think purescript was doing that, dunno if it is now, I tweaked that in a personal repo.) (edited)
+
+
+
+Where does the new core sit among intermediate representations?
+
+z_snail — 06/07/2022
+Core will still be in the same place, so it goes:
+surface language -> TTImp -> TT (core) -> CExp -> Lifted -> ANF -> VMCode
+
+
+
+The type checker knows you're getting a number on the second invocation or it would complain.
+[23:05]
+I guess if the ML wasn't checking for coverage, you could, in this case, split the function in two and call one or the other in the output code.
+
+1
+
+GunpowderGuy — Today at 23:13
+Standard Ml is able to change its return type based on a closure used. So if it has some sort of compile time function execution, the closure used to determine the type could be selected based on x (edited)
+
+GunpowderGuy — Today at 23:22
+I dont think MLton supports that. The least hacky solution i can think of is to return : int | string
