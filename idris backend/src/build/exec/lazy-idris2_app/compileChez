@@ -1,0 +1,1 @@
+(parameterize ([optimize-level 3] [compile-file-message #f]) (compile-program "/home/diegor/Documents/idris backend/src/build/exec/lazy-idris2_app/lazy-idris2.ss"))
