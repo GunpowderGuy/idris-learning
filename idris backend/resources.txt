@@ -4,3 +4,12 @@ https://en.m.wikipedia.org/wiki/Abstract_syntax_tree
 https://docs.rs/pretty/latest/pretty/
 
 https://github.com/CodingCellist/idris2-sinter
+
+
+commands to run:
+
+export IDRIS2_PACKAGE_PATH="$($HOME/.pack/bin/pack package-path)"
+
+export IDRIS2_DATA="$($HOME/.pack/bin/pack data-path)"
+
+export IDRIS2_LIBS="$($HOME/.pack/bin/pack libs-path)"

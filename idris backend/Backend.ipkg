@@ -13,7 +13,7 @@ authors = "Diego"
 -- langversion
 
 -- packages to add to search path
-   depends = idris2, network
+   depends = idris2, network, contrib
 
 -- modules to install
 -- modules =
@@ -23,7 +23,7 @@ main = Main
 
 -- name of executable
 executable = exe
--- opts =
+opts = "-p contrib -p idris2"
 sourcedir = "src"
 -- builddir =
 -- outputdir =
