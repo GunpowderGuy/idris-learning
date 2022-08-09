@@ -13,9 +13,20 @@ mostrar: NamedDef -> String
 mostrar (MkNmFun x y) = "funcion"
 mostrar _ = "null"
 
-gen : List (Name, FC, NamedDef) -> String
-gen lista = Data.String.unlines ( map (\(x,y,z) => show x ++ " endNAME " ++ show z) lista)
+mlFunction : Name -> List Name -> NamedCExp -> String 
+mlFunction nombre argumentos cuerpo = 
+  let argumentos2 := map show argumentos
+      cuerpo2 := "return soul"
+    in
+    "fun "++ (show nombre) ++"("++ (joinBy "," argumentos2)++") \n" ++ cuerpo2 ++ "\nend"
 
+gen : List (Name, FC, NamedDef) -> String
+--gen lista = Data.String.unlines $ map (\(x,y,z) => show x ++ " endNAME " ++ show z) lista
+gen lista = Data.String.unlines $ map (\(x,y,z) => aplicar x z) lista
+  where
+  aplicar : Name -> NamedDef -> String
+  aplicar nombre (MkNmFun listaNombres definicion) = mlFunction nombre listaNombres definicion
+  aplicar nombre _ = ""
 
 compile :
   Ref Ctxt Defs -> Ref Syn SyntaxInfo ->
