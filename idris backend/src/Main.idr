@@ -7,15 +7,22 @@ import Idris.Syntax
 
 import Core.CompileExpr -- Needed to use namedDefs
 
+import Data.String
+
+mostrar: NamedDef -> String
+mostrar (MkNmFun x y) = "funcion"
+mostrar _ = "null"
+
 gen : List (Name, FC, NamedDef) -> String
-gen lista = "compiles and runs"
+gen lista = Data.String.unlines ( map (\(x,y,z) => show x ++ " endNAME " ++ show z) lista)
+
 
 compile :
   Ref Ctxt Defs -> Ref Syn SyntaxInfo ->
   (tmpDir : String) -> (execDir : String) ->
   ClosedTerm -> (outfile : String) -> Core (Maybe String)
 compile syn defs tmp dir term file
-  = do coreLift $ putStrLn "I'd rather not."
+  = do coreLift $ putStrLn "I'd rather not. XD"
        cd <- getCompileData False Lifted term
        --let defs = Compiler.Common.CompileData.namedDefs cd
        let defs = cd.namedDefs

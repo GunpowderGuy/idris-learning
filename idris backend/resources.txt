@@ -8,6 +8,11 @@ https://docs.rs/pretty/latest/pretty/
 https://github.com/CodingCellist/idris2-sinter
 
 
+https://smlhelp.github.io/book/start/syntax.html
+
+https://github.com/yuex/awesome-cheatsheet/blob/master/sml.md
+
+
 commands to run:
 
 export IDRIS2_PACKAGE_PATH="$($HOME/.pack/bin/pack package-path)"
@@ -15,3 +20,7 @@ export IDRIS2_PACKAGE_PATH="$($HOME/.pack/bin/pack package-path)"
 export IDRIS2_DATA="$($HOME/.pack/bin/pack data-path)"
 
 export IDRIS2_LIBS="$($HOME/.pack/bin/pack libs-path)"
+
+
+
+export IDRIS2_PACKAGE_PATH="$($HOME/.pack/bin/pack package-path)" && export IDRIS2_DATA="$($HOME/.pack/bin/pack data-path)" && export IDRIS2_LIBS="$($HOME/.pack/bin/pack libs-path)"

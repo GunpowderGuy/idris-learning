@@ -1,0 +1,1 @@
+(parameterize ([optimize-level 3] [compile-file-message #f]) (compile-program "/home/diegor/Documents/idris-learning/idris backend/build/exec/build/exec/hello_app/hello.ss"))
